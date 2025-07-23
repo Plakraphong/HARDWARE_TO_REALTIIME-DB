@@ -151,7 +151,7 @@ void loop() {
     client.println();
     client.println(jsonData);
 
-    Serial.println("📤 Sent to Firebase:");
+    Serial.println("Sent to Firebase:");
     Serial.println(jsonData);
 
     while (client.connected()) {
