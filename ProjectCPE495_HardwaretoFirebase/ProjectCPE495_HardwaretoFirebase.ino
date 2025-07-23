@@ -42,7 +42,7 @@ void setup() {
   dht.begin();
 
   if (!amg.begin()) {
-    Serial.println("❌ AMG8833 not detected. Check wiring!");
+    Serial.println("AMG8833 not detected. Check wiring!");
     while (1);
   }
   Serial.println("AMG8833 initialized");
