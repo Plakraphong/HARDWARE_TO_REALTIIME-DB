@@ -45,7 +45,7 @@ void setup() {
     Serial.println("❌ AMG8833 not detected. Check wiring!");
     while (1);
   }
-  Serial.println("✅ AMG8833 initialized");
+  Serial.println("AMG8833 initialized");
 
   Serial.print("Connecting to WiFi...");
   WiFi.begin(ssid, password);
@@ -53,7 +53,7 @@ void setup() {
     delay(500);
     Serial.print(".");
   }
-  Serial.println("\n✅ Connected to WiFi!");
+  Serial.println("\n Connected to WiFi!");
 
   timeClient.begin();
 
@@ -74,7 +74,7 @@ void loop() {
   float humidity = dht.readHumidity();
 
   if (isnan(temperature) || isnan(humidity)) {
-    Serial.println("❌ Error reading from DHT sensor.");
+    Serial.println("Error reading from DHT sensor.");
     return;
   }
 
@@ -141,7 +141,7 @@ void loop() {
   String url = "/sensor/data.json?auth=" + String(firebaseAuth);
 
   if (client.connect(firebaseHost, ---)) {
-    Serial.println("🌐 Connected to Firebase via HTTPS");
+    Serial.println("Connected to Firebase via HTTPS");
 
     client.println("PUT " + url + " HTTP/1.1");
     client.println("Host: " + String(firebaseHost));
@@ -157,12 +157,12 @@ void loop() {
     while (client.connected()) {
       String line = client.readStringUntil('\n');
       if (line.length() == 0) break;
-      Serial.println("🔁 Firebase response: " + line);
+      Serial.println("Firebase response: " + line);
     }
 
     client.stop();
   } else {
-    Serial.println("❌ Failed to connect to Firebase");
+    Serial.println("Failed to connect to Firebase");
   }
 
   delay(3000);
